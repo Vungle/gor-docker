@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gor-replay
+spec:
+  rules:
+  - host: gor-replay.vungle.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gor-replay
+          servicePort: 80
