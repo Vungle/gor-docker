@@ -1,0 +1,31 @@
+---
+  kind: "ReplicationController"
+  apiVersion: "v1"
+  metadata:
+    name: "gor-replay"
+    creationTimestamp: null
+    labels:
+      service: "gor-replay"
+  spec:
+    replicas: 1
+    selector:
+      service: "gor-replay"
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          service: "gor-replay"
+          app: "gor-replay"
+      spec:
+        containers:
+          - name: "gor-replay"
+            image: "vungle/gor-docker:0.10.1"
+            imagePullPolicy: "Always"
+            command:
+              - "gor --input-tcp :28020 --output-dummy true"
+            ports:
+              - containerPort: 28020
+            resources:
+              limits:
+                memory: "10000Mi"
+                cpu: "8000m"
