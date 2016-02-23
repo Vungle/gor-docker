@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gor-replay
+  labels:
+    app: gor-replay
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 28020
+    name: http
+  selector:
+    app: gor-replay
