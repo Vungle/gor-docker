@@ -21,11 +21,7 @@
           - name: "gor-replay"
             image: "vungle/gor-docker:0.10.1"
             imagePullPolicy: "Always"
-            command:
-              - "gor --input-tcp :28020 --output-dummy true"
+            command: [ "bin/sh","-c" ]
+            args: ["gor --input-tcp :28020 --output-dummy true" ]
             ports:
               - containerPort: 28020
-            resources:
-              limits:
-                memory: "10000Mi"
-                cpu: "8000m"
